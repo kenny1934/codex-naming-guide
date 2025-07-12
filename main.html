@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!Courseware (Chi) 教材編碼命名指南</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111827; /* Dark Gray/Black background */
+            min-height: 100vh;
+            color: #e5e7eb; /* Light gray text for readability */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px; /* Center the logo and add space below */
+            display: block;
+            border-radius: 50%; /* Make the logo circular */
+            border: 3px solid #dc2626; /* Red border matching the theme */
+            background-color: #374151; /* White background for visibility */
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.8;
+            color: #d1d5db;
+        }
+
+        /* Card Styles */
+        .card {
+            background: #1f2937; /* Lighter dark gray for cards */
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #374151; /* Subtle border */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2); /* Red glow on hover */
+            border-color: rgba(220, 38, 38, 0.5);
+        }
+        
+        h2 {
+            color: #fff;
+            border-bottom: 2px solid #dc2626; /* Red accent for headings */
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            background: #374151; /* Medium dark gray */
+            color: white;
+            border: 1px solid #4b5563;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: #4b5563; /* Lighter gray on hover */
+            transform: scale(1.05);
+            border-color: #dc2626;
+        }
+
+        .tab.active {
+            background: #dc2626; /* Red for active tab */
+            color: white;
+            font-weight: bold;
+            border-color: #dc2626;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Form Builder */
+        .builder {
+            background: #1f2937; /* Same as card background */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #374151;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #d1d5db; /* Light gray for labels */
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: #374151; /* Dark input background */
+            border: 2px solid #4b5563; /* Dark border */
+            border-radius: 8px;
+            font-size: 16px;
+            color: white; /* White text in inputs */
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group select option {
+            background: #374151;
+            color: white;
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: #dc2626; /* Red border on focus */
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3); /* Red glow on focus */
+        }
+
+        /* Result Display */
+        .result {
+            background: #dc2626; /* Solid red background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-all;
+            border: 1px solid #ef4444;
+        }
+
+        /* Examples Grid */
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .example {
+            background: #374151; /* Dark gray for example boxes */
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #dc2626; /* Red accent border */
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #ef4444; /* Lighter red for titles */
+            margin-bottom: 5px;
+        }
+
+        .example-code {
+            font-family: 'Courier New', monospace;
+            background: #111827; /* Darkest gray for code blocks */
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+            color: #d1d5db;
+            border: 1px solid #4b5563;
+        }
+
+        /* Quiz Styles */
+        .quiz {
+            background: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #e5e7eb;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: #374151;
+            border: 2px solid #4b5563;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #4b5563;
+            border-color: #dc2626;
+        }
+
+        .quiz-option.correct {
+            background: #166534; /* Dark green for correct */
+            border-color: #22c55e;
+            color: #ffffff;
+        }
+
+        .quiz-option.wrong {
+            background: #991b1b; /* Dark red for wrong */
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+        
+        /* Helper & Table Styles */
+        .help-text {
+            font-size: 14px;
+            color: #9ca3af; /* Lighter gray for help text */
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .reference-table th,
+        .reference-table td {
+            border: 1px solid #4b5563; /* Darker border for table */
+            padding: 12px;
+            text-align: left;
+        }
+
+        .reference-table th {
+            background: #dc2626; /* Red for table header */
+            color: white;
+            font-weight: bold;
+        }
+
+        .reference-table tbody tr:nth-child(even) {
+            background: #374151; /* Striped rows */
+        }
+        
+        .reference-table tbody tr:hover {
+            background: #4b5563;
+        }
+
+        .highlight {
+            background: #991b1b; /* Dark red highlight */
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
+            
+            .tab {
+                flex-grow: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./images/msa-logo.png" alt="MSA Logo" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/100x100/ffffff/dc2626?text=Logo';">
+            <h1>!Courseware (Chi) 教材編碼命名指南</h1>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="builder">📝 命名產生器</button>
+            <button class="tab" data-tab="reference">📋 快速參考</button>
+            <button class="tab" data-tab="examples">💡 範例展示</button>
+            <button class="tab" data-tab="quiz">🎮 小測驗</button>
+        </div>
+
+        <div class="tab-content active" id="builder">
+            <div class="card">
+                <h2>🔧 檔案命名產生器</h2>
+                <p>回答以下問題，系統將自動產生正確的檔案名稱</p>
+                
+                <div class="builder">
+                    <div class="form-group">
+                        <label>年級</label>
+                        <select id="gradeChapter">
+                            <option value="">請選擇...</option>
+                            <option value="F1">F1 (Form 1)</option>
+                            <option value="F2">F2 (Form 2)</option>
+                            <option value="F3">F3 (Form 3)</option>
+                            <option value="SS">高中 (Senior Secondary)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="chapterGroup" style="display: none;">
+                        <label>章節</label>
+                        <select id="chapterNumber">
+                            <option value="">請選擇章節...</option>
+                        </select>
+                        <div class="help-text">選擇具體的章節</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>內容範圍</label>
+                        <select id="scope">
+                            <option value="">請選擇...</option>
+                            <option value="auto">從課程選擇章節/小節</option>
+                            <option value="chapter">整章內容</option>
+                            <option value="extension">章節延伸內容</option>
+                            <option value="exclusive">完全獨有內容</option>
+                            <option value="multi">多個章節</option>
+                        </select>
+                        <div class="help-text">選擇內容覆蓋的範圍類型</div>
+                    </div>
+
+                    <div class="form-group" id="autoSectionGroup" style="display: none;">
+                        <label>章節</label>
+                        <select id="sectionSelect">
+                            <option value="">請先選擇章節...</option>
+                        </select>
+                        <div class="help-text">選擇具體的章節</div>
+                    </div>
+
+                    <div class="form-group" id="autoSubsectionGroup" style="display: none;">
+                        <label>小節 (可選)</label>
+                        <select id="subsectionSelect">
+                            <option value="">無小節 (選擇整個章節)</option>
+                        </select>
+                        <div class="help-text">選擇具體的小節，或留空選擇整個章節</div>
+                    </div>
+
+                    <div class="form-group" id="sectionGroup" style="display: none;">
+                        <label>章節編號 (手動輸入)</label>
+                        <input type="text" id="sectionNumber" placeholder="例如: 1.1, X1, 3,5">
+                        <div class="help-text">延伸用小數點，獨有用X，多章節可用逗號分隔(會自動轉換為+號)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>內容類型</label>
+                        <select id="contentType">
+                            <option value="">請選擇...</option>
+                            <option value="EX">練習題 (EX)</option>
+                            <option value="R">複習卷 (R)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>難度等級</label>
+                        <select id="difficulty">
+                            <option value="">請選擇...</option>
+                            <option value="1">Level 1 - 基礎 (1XX)</option>
+                            <option value="2">Level 2 - 標準 (2XX)</option>
+                            <option value="3">Level 3 - 進階 (3XX)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>序號</label>
+                        <input type="number" id="sequence" min="1" max="99" placeholder="01-99">
+                        <div class="help-text">同等級內的順序編號</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>章節名稱</label>
+                        <input type="text" id="sectionName" placeholder="例如: 有理數的加減法 (可從下拉選單自動填入)">
+                        <div class="help-text">選擇章節/小節後會自動填入，也可手動修改</div>
+                    </div>
+
+                    <div class="result" id="result">
+                        請填寫上述資訊產生檔案名稱
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="reference">
+            <div class="card">
+                <h2>📋 快速參考表</h2>
+                
+                <h3>🏗️ 基本結構</h3>
+                <div class="example-code">
+                    [年級章節].[章節]_[類型][等級][序號]_[章節名稱].pdf
+                </div>
+
+                <h3>📊 編碼對照表</h3>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>格式</th>
+                            <th>範例</th>
+                            <th>說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="highlight">初中標準章節</span></td>
+                            <td>.1, .2, .3...</td>
+                            <td>701.3, 902.1.3</td>
+                            <td>教科書標準章節</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">高中主題</span></td>
+                            <td>SS01, SS02...</td>
+                            <td>SS01.1, SS14.3.2</td>
+                            <td>高中主題章節</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">章節延伸</span></td>
+                            <td>.1.1, .2.1...</td>
+                            <td>904.3.1</td>
+                            <td>現有章節的延伸內容</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">獨有內容</span></td>
+                            <td>.X1, .X2...</td>
+                            <td>904.X1</td>
+                            <td>教科書沒有但學校教授的內容</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">整章內容</span></td>
+                            <td>.0</td>
+                            <td>701.0, SS01.0</td>
+                            <td>涵蓋整個章節/主題</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">多個章節</span></td>
+                            <td>.1+3, .2+5</td>
+                            <td>701.3+5</td>
+                            <td>結合多個章節內容</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🎯 使用技巧</h3>
+                <div class="examples">
+                    <div class="example">
+                        <div class="example-title">🚀 自動選擇模式</div>
+                        <div>1. 選擇年級 → 2. 選擇章節 → 3. 選擇「從課程選擇章節/小節」→ 4. 從下拉選單選擇章節/小節</div>
+                        <div style="margin-top: 8px; color: #28a745; font-weight: bold;">✅ 章節名稱會自動填入！</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">📚 整章內容模式</div>
+                        <div>1. 選擇年級 → 2. 選擇章節 → 3. 選擇「整章內容」</div>
+                        <div style="margin-top: 8px; color: #28a745; font-weight: bold;">✅ 章節名稱會自動填入！</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">✋ 手動輸入模式</div>
+                        <div>適用於延伸內容、獨有內容、或多章節組合</div>
+                        <div style="margin-top: 8px; color: #6c757d;">💡 支援逗號自動轉換：3,5 → 3+5</div>
+                    </div>
+                </div>
+
+                <h3>🎯 難度等級</h3>
+                <div class="examples">
+                    <div class="example">
+                        <div class="example-title">Level 1 (1XX)</div>
+                        <div class="example-code">基礎練習</div>
+                        <div>所有學生都應該嘗試的基礎題目</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">Level 2 (2XX)</div>
+                        <div class="example-code">標準練習</div>
+                        <div>一般課程標準的練習題目</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">Level 3 (3XX)</div>
+                        <div class="example-code">進階練習</div>
+                        <div>挑戰題目</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="examples">
+            <div class="card">
+                <h2>💡 實際範例</h2>
+                
+                <h3>📝 練習題範例</h3>
+                <div class="examples">
+                    <div class="example">
+                        <div class="example-title">基礎有理數加法</div>
+                        <div class="example-code">701.3_EX101_有理數的加減法.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">標準三角形練習</div>
+                        <div class="example-code">801.1_EX201_與三角形有關的線段.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">進階圓的性質</div>
+                        <div class="example-code">904.1_EX301_圓的有關性質.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">小節練習：數軸</div>
+                        <div class="example-code">701.2.2_EX201_數軸.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">高中集合概念</div>
+                        <div class="example-code">SS01.1_EX101_集合的概念.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">獨有內容：弦切角</div>
+                        <div class="example-code">904.X1_EX201_弦切角.pdf</div>
+                    </div>
+                </div>
+
+                <h3>📋 複習卷範例</h3>
+                <div class="examples">
+                    <div class="example">
+                        <div class="example-title">章節複習 (2頁)</div>
+                        <div class="example-code">701.3_R101_有理數的加減法複習.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">整章複習 (6-8頁)</div>
+                        <div class="example-code">701.0_R201_有理數.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">幾何圖形複習</div>
+                        <div class="example-code">704.0_R201_幾何圖形初步.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">高中主題複習</div>
+                        <div class="example-code">SS01.0_R201_集合與常用邏輯用語.pdf</div>
+                    </div>
+                    <div class="example">
+                        <div class="example-title">多章節複習</div>
+                        <div class="example-code">701.3+4_R101_運算綜合複習.pdf</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="quiz">
+            <div class="card">
+                <h2>🎮 互動小測驗</h2>
+                <p>測試你對新編碼系統的理解程度！</p>
+
+                <div class="quiz" id="quiz1">
+                    <div class="quiz-question">
+                        Q1: 如果要為「與三角形有關的線段」這個標準教科書章節創建一個基礎難度的練習題，正確的編碼格式是？
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">801.1_EX201_與三角形有關的線段.pdf</div>
+                        <div class="quiz-option" data-answer="correct">801.1_EX101_與三角形有關的線段.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">801.1_EX301_與三角形有關的線段.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">801.X1_EX101_與三角形有關的線段.pdf</div>
+                    </div>
+                </div>
+
+                <div class="quiz" id="quiz2">
+                    <div class="quiz-question">
+                        Q2: 「弦切角」是某些學校教授但不在標準教科書的內容，應該使用什麼格式？
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">904.5_EX101_弦切角.pdf</div>
+                        <div class="quiz-option" data-answer="correct">904.X1_EX101_弦切角.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">904.5.1_EX101_弦切角.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">904.1+5_EX101_弦切角.pdf</div>
+                    </div>
+                </div>
+
+                <div class="quiz" id="quiz3">
+                    <div class="quiz-question">
+                        Q3: 如果要創建一個涵蓋整個「集合與常用邏輯用語」高中主題的進階複習卷，應該用什麼格式？
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">SS01.1_R301_集合與常用邏輯用語.pdf</div>
+                        <div class="quiz-option" data-answer="correct">SS01.0_R301_集合與常用邏輯用語.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">SS01.1+2+3_R301_集合與常用邏輯用語.pdf</div>
+                        <div class="quiz-option" data-answer="wrong">SS01.X1_R301_集合與常用邏輯用語.pdf</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 MathConcept Secondary Academy. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Real curriculum data with sections and subsections
+        const curriculumData = {
+            "F1": [
+                {code: "701", title: "有理數", value: "01"},
+                {code: "702", title: "整式的加減", value: "02"},
+                {code: "703", title: "一元一次方程", value: "03"},
+                {code: "704", title: "幾何圖形初步", value: "04"},
+                {code: "705", title: "相交線與平行線", value: "05"},
+                {code: "706", title: "實數", value: "06"},
+                {code: "707", title: "平面直角座標系", value: "07"},
+                {code: "708", title: "二元一次方程組", value: "08"},
+                {code: "709", title: "不等式與不等式組", value: "09"},
+                {code: "710", title: "數據的收集、整理與描述", value: "10"}
+            ],
+            "F2": [
+                {code: "801", title: "三角形", value: "01"},
+                {code: "802", title: "全等三角形", value: "02"},
+                {code: "803", title: "軸對稱", value: "03"},
+                {code: "804", title: "整式的乘法與因式分解", value: "04"},
+                {code: "805", title: "分式", value: "05"},
+                {code: "806", title: "二次根式", value: "06"},
+                {code: "807", title: "勾股定理", value: "07"},
+                {code: "808", title: "平行四邊形", value: "08"},
+                {code: "809", title: "一次函數", value: "09"},
+                {code: "810", title: "數據的分析", value: "10"}
+            ],
+            "F3": [
+                {code: "901", title: "一元二次方程", value: "01"},
+                {code: "902", title: "二次函數", value: "02"},
+                {code: "903", title: "旋轉", value: "03"},
+                {code: "904", title: "圓", value: "04"},
+                {code: "905", title: "概率初步", value: "05"},
+                {code: "906", title: "反比例函數", value: "06"},
+                {code: "907", title: "相似", value: "07"},
+                {code: "908", title: "銳角三角函數", value: "08"},
+                {code: "909", title: "投影與視圖", value: "09"}
+            ],
+            "SS": [
+                {code: "SS01", title: "集合與常用邏輯用語", value: "01"},
+                {code: "SS02", title: "一元二次函數、方程和不等式", value: "02"},
+                {code: "SS03", title: "函數的概念與性質", value: "03"},
+                {code: "SS04", title: "指數與對數函數", value: "04"},
+                {code: "SS05", title: "三角函數", value: "05"}
+            ]
+        };
+
+        // Section and subsection data for ALL chapters
+        const sectionData = {
+  "701": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "正數和負數"
+      },
+      {
+        "number": 2,
+        "title": "有理數"
+      },
+      {
+        "number": 3,
+        "title": "有理數的加減法"
+      },
+      {
+        "number": 4,
+        "title": "有理數的乘除法"
+      },
+      {
+        "number": 5,
+        "title": "有理數的乘方"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 2.1,
+        "title": "有理數",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "數軸",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "相反數",
+        "parent": 2
+      },
+      {
+        "number": 2.4,
+        "title": "絕對值",
+        "parent": 2
+      },
+      {
+        "number": 3.1,
+        "title": "有理數的加法",
+        "parent": 3
+      },
+      {
+        "number": 3.2,
+        "title": "有理數的減法",
+        "parent": 3
+      },
+      {
+        "number": 4.1,
+        "title": "有理數的乘法",
+        "parent": 4
+      },
+      {
+        "number": 4.2,
+        "title": "有理數的除法",
+        "parent": 4
+      },
+      {
+        "number": 5.1,
+        "title": "乘方",
+        "parent": 5
+      },
+      {
+        "number": 5.2,
+        "title": "科學記數法",
+        "parent": 5
+      },
+      {
+        "number": 5.3,
+        "title": "近似數",
+        "parent": 5
+      }
+    ]
+  },
+  "702": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "整式"
+      },
+      {
+        "number": 2,
+        "title": "整式的加減"
+      }
+    ],
+    "subsections": []
+  },
+  "703": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "從算式到方程"
+      },
+      {
+        "number": 2,
+        "title": "解一元一次方程(一)——合併同類項與移項"
+      },
+      {
+        "number": 3,
+        "title": "解一元一次方程(二)——去括號與去分母"
+      },
+      {
+        "number": 4,
+        "title": "實際問題與一元一次方程"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "一元一次方程",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "等式的性質",
+        "parent": 1
+      }
+    ]
+  },
+  "704": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "幾何圖形"
+      },
+      {
+        "number": 2,
+        "title": "直線、射線、線段"
+      },
+      {
+        "number": 3,
+        "title": "角"
+      },
+      {
+        "number": 4,
+        "title": "課題學習 設計製作長方體形狀的包裝盒蓋"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "立體圖形與平面圖形",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "點、線、面、體",
+        "parent": 1
+      },
+      {
+        "number": 3.1,
+        "title": "角",
+        "parent": 3
+      },
+      {
+        "number": 3.2,
+        "title": "角的比較與運算",
+        "parent": 3
+      },
+      {
+        "number": 3.3,
+        "title": "餘角和補角",
+        "parent": 3
+      }
+    ]
+  },
+  "705": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "相交線"
+      },
+      {
+        "number": 2,
+        "title": "平行線及其判定"
+      },
+      {
+        "number": 3,
+        "title": "平行線的性質"
+      },
+      {
+        "number": 4,
+        "title": "平移"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "相交線",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "垂線",
+        "parent": 1
+      },
+      {
+        "number": 1.3,
+        "title": "同位角、內錯角、同旁內角",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "平行線",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "平行線的判定",
+        "parent": 2
+      },
+      {
+        "number": 3.1,
+        "title": "平行線的性質",
+        "parent": 3
+      },
+      {
+        "number": 3.2,
+        "title": "命題、定理、證明",
+        "parent": 3
+      }
+    ]
+  },
+  "706": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "平方根"
+      },
+      {
+        "number": 2,
+        "title": "立方根"
+      },
+      {
+        "number": 3,
+        "title": "實數"
+      }
+    ],
+    "subsections": []
+  },
+  "707": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "平面直角座標系"
+      },
+      {
+        "number": 2,
+        "title": "座標方法的簡單應用"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "有序數對",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "平面直角座標系",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "用座標表示地理位置",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "用座標表示平移",
+        "parent": 2
+      }
+    ]
+  },
+  "708": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "二元一次方程組"
+      },
+      {
+        "number": 2,
+        "title": "消元——一元二元一次方程組"
+      },
+      {
+        "number": 3,
+        "title": "實際問題與二元一次方程組"
+      },
+      {
+        "number": 4,
+        "title": "三元一次方程組的解法"
+      }
+    ],
+    "subsections": []
+  },
+  "709": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "不等式"
+      },
+      {
+        "number": 2,
+        "title": "一元一次不等式"
+      },
+      {
+        "number": 3,
+        "title": "一元一次不等式組"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "不等式及其解集",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "不等式的性質",
+        "parent": 1
+      }
+    ]
+  },
+  "710": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "統計調查"
+      },
+      {
+        "number": 2,
+        "title": "直方圖"
+      }
+    ],
+    "subsections": []
+  },
+  "801": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "與三角形有關的線段"
+      },
+      {
+        "number": 2,
+        "title": "與三角形有關的角"
+      },
+      {
+        "number": 3,
+        "title": "多邊形及其內角和"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "三角形的邊",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "三角形的高、中線與角平分線",
+        "parent": 1
+      },
+      {
+        "number": 1.3,
+        "title": "三角形的穩定性",
+        "parent": 1
+      }
+    ]
+  },
+  "802": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "全等三角形"
+      },
+      {
+        "number": 2,
+        "title": "三角形全等的判定"
+      },
+      {
+        "number": 3,
+        "title": "角的平分線的性質"
+      }
+    ],
+    "subsections": []
+  },
+  "803": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "軸對稱"
+      },
+      {
+        "number": 2,
+        "title": "畫軸對稱圖形"
+      },
+      {
+        "number": 3,
+        "title": "等腰三角形"
+      },
+      {
+        "number": 4,
+        "title": "課題學習 最短路徑問題"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "軸對稱",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "線段的垂直平分線的性質",
+        "parent": 1
+      },
+      {
+        "number": 3.1,
+        "title": "等腰三角形",
+        "parent": 3
+      },
+      {
+        "number": 3.2,
+        "title": "等邊三角形",
+        "parent": 3
+      }
+    ]
+  },
+  "804": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "整式的乘法"
+      },
+      {
+        "number": 2,
+        "title": "乘法公式"
+      },
+      {
+        "number": 3,
+        "title": "因式分解"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "同底數冪的乘法",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "冪的乘方",
+        "parent": 1
+      },
+      {
+        "number": 1.3,
+        "title": "積的乘方",
+        "parent": 1
+      },
+      {
+        "number": 1.4,
+        "title": "整式的乘法",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "平方差公式",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "完全平方公式",
+        "parent": 2
+      },
+      {
+        "number": 3.1,
+        "title": "提公因式法",
+        "parent": 3
+      },
+      {
+        "number": 3.2,
+        "title": "公式法",
+        "parent": 3
+      }
+    ]
+  },
+  "805": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "分式"
+      },
+      {
+        "number": 2,
+        "title": "分式的運算"
+      },
+      {
+        "number": 3,
+        "title": "分式方程"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "從分數到分式",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "分式的基本性質",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "分式的乘除",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "分式的加減",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "整數指數冪",
+        "parent": 2
+      }
+    ]
+  },
+  "806": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "二次根式"
+      },
+      {
+        "number": 2,
+        "title": "二次根式的乘除"
+      },
+      {
+        "number": 3,
+        "title": "二次根式的加減"
+      }
+    ],
+    "subsections": []
+  },
+  "807": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "勾股定理"
+      },
+      {
+        "number": 2,
+        "title": "勾股定理的逆定理"
+      }
+    ],
+    "subsections": []
+  },
+  "808": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "平行四邊形"
+      },
+      {
+        "number": 2,
+        "title": "特殊的平行四邊形"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "平行四邊形的性質",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "平行四邊形的判定",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "矩形",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "菱形",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "正方形",
+        "parent": 2
+      }
+    ]
+  },
+  "809": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "函數"
+      },
+      {
+        "number": 2,
+        "title": "一次函數"
+      },
+      {
+        "number": 3,
+        "title": "課題學習 選擇方案"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "變量與函數",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "函數的圖像",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "正比例函數",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "一次函數",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "一次函數與方程、不等式",
+        "parent": 2
+      }
+    ]
+  },
+  "810": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "數據的集中趨勢"
+      },
+      {
+        "number": 2,
+        "title": "數據的波動程度"
+      },
+      {
+        "number": 3,
+        "title": "課題學習 體質健康測試中的數據分析"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "平均數",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "中位數和眾數",
+        "parent": 1
+      }
+    ]
+  },
+  "901": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "一元二次方程"
+      },
+      {
+        "number": 2,
+        "title": "解一元二次方程"
+      },
+      {
+        "number": 3,
+        "title": "實際問題與一元二次方程"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 2.1,
+        "title": "配方法",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "公式法",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "因式分解法",
+        "parent": 2
+      },
+      {
+        "number": 2.4,
+        "title": "一元二次方程的根與係數的關係",
+        "parent": 2
+      }
+    ]
+  },
+  "902": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "二次函數的圖象和性質"
+      },
+      {
+        "number": 2,
+        "title": "二次函數與一元二次方程"
+      },
+      {
+        "number": 3,
+        "title": "實際問題與二次函數"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "二次函數",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "二次函數y=ax²的圖象和性質",
+        "parent": 1
+      },
+      {
+        "number": 1.3,
+        "title": "二次函數y=a(x-h)²+k的圖象和性質",
+        "parent": 1
+      },
+      {
+        "number": 1.4,
+        "title": "二次函數y=ax²+bx+c的圖象和性質",
+        "parent": 1
+      }
+    ]
+  },
+  "903": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "圖形的旋轉"
+      },
+      {
+        "number": 2,
+        "title": "中心對稱"
+      },
+      {
+        "number": 3,
+        "title": "課題學習 圖案設計"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 2.1,
+        "title": "中心對稱",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "中心對稱圖形",
+        "parent": 2
+      },
+      {
+        "number": 2.3,
+        "title": "關於原點對稱的點的座標",
+        "parent": 2
+      }
+    ]
+  },
+  "904": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "圓的有關性質"
+      },
+      {
+        "number": 2,
+        "title": "點和圓、直線和圓的位置關係"
+      },
+      {
+        "number": 3,
+        "title": "正多邊形和圓"
+      },
+      {
+        "number": 4,
+        "title": "弧長和扇形面積"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "圓",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "垂直於弦的直徑",
+        "parent": 1
+      },
+      {
+        "number": 1.3,
+        "title": "弧、弦、圓心角",
+        "parent": 1
+      },
+      {
+        "number": 1.4,
+        "title": "圓周角",
+        "parent": 1
+      },
+      {
+        "number": 2.1,
+        "title": "點和圓的位置關係",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "直線和圓の位置關係",
+        "parent": 2
+      }
+    ]
+  },
+  "905": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "隨機事件與概率"
+      },
+      {
+        "number": 2,
+        "title": "用列舉法求概率"
+      },
+      {
+        "number": 3,
+        "title": "用頻率估計概率"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "隨機事件",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "概率",
+        "parent": 1
+      }
+    ]
+  },
+  "906": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "反比例函數"
+      },
+      {
+        "number": 2,
+        "title": "實際問題與反比例函數"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 1.1,
+        "title": "反比例函數",
+        "parent": 1
+      },
+      {
+        "number": 1.2,
+        "title": "反比例函數的圖象和性質",
+        "parent": 1
+      }
+    ]
+  },
+  "907": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "圖形的相似"
+      },
+      {
+        "number": 2,
+        "title": "相似三角形"
+      },
+      {
+        "number": 3,
+        "title": "位似"
+      }
+    ],
+    "subsections": []
+  },
+  "908": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "銳角三角函數"
+      },
+      {
+        "number": 2,
+        "title": "解直角三角形及其應用"
+      }
+    ],
+    "subsections": [
+      {
+        "number": 2.1,
+        "title": "解直角三角形",
+        "parent": 2
+      },
+      {
+        "number": 2.2,
+        "title": "應用舉例",
+        "parent": 2
+      }
+    ]
+  },
+  "909": {
+    "sections": [
+      {
+        "number": 1,
+        "title": "投影"
+      },
+      {
+        "number": 2,
+        "title": "三視圖"
+      },
+      {
+        "number": 3,
+        "title": "課題學習 製作立體模型"
+      }
+    ],
+    "subsections": []
+  }
+};
+
+        // Form builder functionality
+        const inputs = ['gradeChapter', 'chapterNumber', 'scope', 'sectionNumber', 'sectionSelect', 'subsectionSelect', 'contentType', 'difficulty', 'sequence', 'sectionName'];
+        
+        inputs.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener('change', updateResult);
+                element.addEventListener('input', updateResult);
+            }
+        });
+
+        // Show/hide chapter number input based on grade selection and populate chapters
+        document.getElementById('gradeChapter').addEventListener('change', function() {
+            const chapterGroup = document.getElementById('chapterGroup');
+            const chapterSelect = document.getElementById('chapterNumber');
+            const value = this.value;
+            
+            if (value) {
+                chapterGroup.style.display = 'block';
+                
+                // Clear previous options
+                chapterSelect.innerHTML = '<option value="">請選擇章節...</option>';
+                
+                // Populate with real curriculum data
+                if (curriculumData[value]) {
+                    curriculumData[value].forEach(chapter => {
+                        const option = document.createElement('option');
+                        option.value = chapter.value;
+                        option.textContent = `${chapter.value}. ${chapter.title}`;
+                        option.dataset.code = chapter.code;
+                        chapterSelect.appendChild(option);
+                    });
+                }
+            } else {
+                chapterGroup.style.display = 'none';
+            }
+            
+            // Reset dependent dropdowns and fields
+            clearSectionDropdowns();
+            document.getElementById('sectionName').value = '';
+            updateResult();
+        });
+
+        // Handle chapter selection to populate sections
+        document.getElementById('chapterNumber').addEventListener('change', function() {
+            const scope = document.getElementById('scope').value;
+            
+            if (scope === 'auto') {
+                populateSections();
+                document.getElementById('sectionName').value = '';
+            } else if (scope === 'chapter') {
+                autoFillChapterName();
+            } else {
+                document.getElementById('sectionName').value = '';
+            }
+            
+            clearSubsectionDropdown();
+            updateResult();
+        });
+
+        // Handle section selection to populate subsections
+        document.getElementById('sectionSelect').addEventListener('change', function() {
+            if (document.getElementById('scope').value === 'auto') {
+                populateSubsections();
+            }
+            autoFillSectionName();
+            updateResult();
+        });
+
+        // Handle subsection selection to auto-fill name
+        document.getElementById('subsectionSelect').addEventListener('change', function() {
+            autoFillSectionName();
+            updateResult();
+        });
+
+        // *** CORRECTED EVENT LISTENER FOR SCOPE DROPDOWN ***
+        document.getElementById('scope').addEventListener('change', function() {
+            const value = this.value;
+            const sectionGroup = document.getElementById('sectionGroup');
+            const autoSectionGroup = document.getElementById('autoSectionGroup');
+            const autoSubsectionGroup = document.getElementById('autoSubsectionGroup');
+            const sectionNameInput = document.getElementById('sectionName');
+            const sectionNumberInput = document.getElementById('sectionNumber');
+
+            // Hide all conditional groups initially
+            sectionGroup.style.display = 'none';
+            autoSectionGroup.style.display = 'none';
+            autoSubsectionGroup.style.display = 'none';
+
+            // Clear manual input field
+            sectionNumberInput.value = '';
+
+            // Handle visibility and autofill based on scope
+            switch (value) {
+                case 'auto':
+                    autoSectionGroup.style.display = 'block';
+                    autoSubsectionGroup.style.display = 'block';
+                    
+                    // Reset fields for new selection
+                    clearSectionDropdowns();
+                    sectionNameInput.value = '';
+
+                    // Populate sections if chapter is already selected
+                    if (document.getElementById('chapterNumber').value) {
+                        populateSections();
+                    }
+                    break;
+
+                case 'chapter':
+                    // This is the key fix: Automatically fill chapter name and clear dropdowns
+                    autoFillChapterName();
+                    clearSectionDropdowns();
+                    break;
+
+                case 'extension':
+                case 'exclusive':
+                case 'multi':
+                    sectionGroup.style.display = 'block';
+                    
+                    // Clear auto-filled name and dropdowns
+                    sectionNameInput.value = '';
+                    clearSectionDropdowns();
+
+                    // Update placeholder
+                    if (value === 'extension') sectionNumberInput.placeholder = '例如: 1.1, 2.1, 5.2';
+                    if (value === 'exclusive') sectionNumberInput.placeholder = '例如: X1, X2, X3';
+                    if (value === 'multi') sectionNumberInput.placeholder = '例如: 3,5 或 1,3,5 (系統會自動轉換為+號)';
+                    break;
+                    
+                default:
+                    // This is for the "請選擇..." option
+                    sectionNameInput.value = '';
+                    clearSectionDropdowns();
+                    break;
+            }
+            updateResult();
+        });
+
+        function populateSections() {
+            const chapterSelect = document.getElementById('chapterNumber');
+            const sectionSelect = document.getElementById('sectionSelect');
+            
+            if (!chapterSelect || !sectionSelect) return;
+            
+            const selectedOption = chapterSelect.options[chapterSelect.selectedIndex];
+            
+            sectionSelect.innerHTML = '<option value="">請選擇章節...</option>';
+            
+            if (!selectedOption || !selectedOption.dataset.code) {
+                return;
+            }
+            
+            const chapterCode = selectedOption.dataset.code;
+            
+            if (sectionData[chapterCode] && sectionData[chapterCode].sections) {
+                sectionData[chapterCode].sections.forEach(section => {
+                    const option = document.createElement('option');
+                    option.value = section.number;
+                    option.textContent = `${section.number}. ${section.title}`;
+                    sectionSelect.appendChild(option);
+                });
+            }
+        }
+
+        function populateSubsections() {
+            const chapterSelect = document.getElementById('chapterNumber');
+            const sectionSelect = document.getElementById('sectionSelect');
+            const subsectionSelect = document.getElementById('subsectionSelect');
+            
+            if (!chapterSelect || !sectionSelect || !subsectionSelect) return;
+            
+            const selectedChapterOption = chapterSelect.options[chapterSelect.selectedIndex];
+            const selectedSection = sectionSelect.value;
+            
+            subsectionSelect.innerHTML = '<option value="">無小節 (選擇整個章節)</option>';
+            
+            if (!selectedChapterOption || !selectedChapterOption.dataset.code || !selectedSection) {
+                return;
+            }
+            
+            const chapterCode = selectedChapterOption.dataset.code;
+            const sectionNumber = parseInt(selectedSection);
+            
+            if (sectionData[chapterCode] && sectionData[chapterCode].subsections) {
+                const relevantSubsections = sectionData[chapterCode].subsections.filter(
+                    sub => sub.parent === sectionNumber
+                );
+                
+                relevantSubsections.forEach(subsection => {
+                    const option = document.createElement('option');
+                    option.value = subsection.number;
+                    option.textContent = `${subsection.number} ${subsection.title}`;
+                    subsectionSelect.appendChild(option);
+                });
+            }
+        }
+
+        function clearSectionDropdowns() {
+            document.getElementById('sectionSelect').innerHTML = '<option value="">請先選擇章節...</option>';
+            clearSubsectionDropdown();
+        }
+
+        function clearSubsectionDropdown() {
+            document.getElementById('subsectionSelect').innerHTML = '<option value="">無小節 (選擇整個章節)</option>';
+        }
+
+        function autoFillChapterName() {
+            const gradeSelect = document.getElementById('gradeChapter');
+            const chapterSelect = document.getElementById('chapterNumber');
+            const sectionNameInput = document.getElementById('sectionName');
+            
+            if (!gradeSelect || !chapterSelect || !sectionNameInput) return;
+            
+            const grade = gradeSelect.value;
+            const chapterValue = chapterSelect.value;
+            
+            if (!grade || !chapterValue) return;
+            
+            if (curriculumData[grade]) {
+                const chapter = curriculumData[grade].find(ch => ch.value === chapterValue);
+                if (chapter) {
+                    sectionNameInput.value = chapter.title;
+                }
+            }
+            updateResult();
+        }
+
+        function autoFillSectionName() {
+            const chapterSelect = document.getElementById('chapterNumber');
+            const sectionSelect = document.getElementById('sectionSelect');
+            const subsectionSelect = document.getElementById('subsectionSelect');
+            const sectionNameInput = document.getElementById('sectionName');
+            
+            if (!chapterSelect || !sectionSelect || !subsectionSelect || !sectionNameInput) return;
+            
+            const selectedChapterOption = chapterSelect.options[chapterSelect.selectedIndex];
+            if (!selectedChapterOption || !selectedChapterOption.dataset.code) return;
+            
+            const chapterCode = selectedChapterOption.dataset.code;
+            
+            // Default to empty
+            let newName = '';
+
+            if (subsectionSelect.value) {
+                const subsectionNumber = parseFloat(subsectionSelect.value);
+                if (sectionData[chapterCode] && sectionData[chapterCode].subsections) {
+                    const subsection = sectionData[chapterCode].subsections.find(s => s.number === subsectionNumber);
+                    if (subsection) newName = subsection.title;
+                }
+            } else if (sectionSelect.value) {
+                const sectionNumber = parseInt(sectionSelect.value);
+                if (sectionData[chapterCode] && sectionData[chapterCode].sections) {
+                    const section = sectionData[chapterCode].sections.find(s => s.number === sectionNumber);
+                    if (section) newName = section.title;
+                }
+            }
+            sectionNameInput.value = newName;
+            updateResult();
+        }
+        
+        function updateResult() {
+            const grade = document.getElementById('gradeChapter').value;
+            const chapterSelect = document.getElementById('chapterNumber');
+            const chapterNumber = chapterSelect.value;
+            const scope = document.getElementById('scope').value;
+            const sectionNumber = document.getElementById('sectionNumber').value;
+            const sectionSelectVal = document.getElementById('sectionSelect').value;
+            const subsectionSelectVal = document.getElementById('subsectionSelect').value;
+            const contentType = document.getElementById('contentType').value;
+            const difficulty = document.getElementById('difficulty').value;
+            const sequence = document.getElementById('sequence').value;
+            const sectionName = document.getElementById('sectionName').value;
+            
+            if (!grade || !chapterNumber || !scope || !contentType || !difficulty || !sequence || !sectionName) {
+                document.getElementById('result').textContent = '請填寫所有必要資訊';
+                return;
+            }
+
+            let gradeChapterCode = '';
+            const selectedOption = chapterSelect.options[chapterSelect.selectedIndex];
+            if (selectedOption && selectedOption.dataset.code) {
+                gradeChapterCode = selectedOption.dataset.code;
+            } else {
+                 document.getElementById('result').textContent = '請選擇有效的年級和章節';
+                return;
+            }
+
+            let section = '';
+            if (scope === 'chapter') {
+                section = '.0';
+            } else if (scope === 'auto') {
+                if (subsectionSelectVal) {
+                    section = '.' + subsectionSelectVal;
+                } else if (sectionSelectVal) {
+                    section = '.' + sectionSelectVal;
+                } else {
+                    document.getElementById('result').textContent = '請選擇章節';
+                    return;
+                }
+            } else if (sectionNumber) {
+                let processedSection = sectionNumber.replace(/,/g, '+').replace(/\s+/g, '');
+                section = '.' + processedSection;
+            } else {
+                document.getElementById('result').textContent = '請輸入或選擇章節編號';
+                return;
+            }
+
+            const paddedSequence = sequence.padStart(2, '0');
+            const level = difficulty + paddedSequence;
+            
+            const result = `${gradeChapterCode}${section}_${contentType}${level}_${sectionName}.pdf`;
+            document.getElementById('result').textContent = result;
+        }
+
+        // Quiz functionality
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const quiz = this.closest('.quiz');
+                const options = quiz.querySelectorAll('.quiz-option');
+                
+                options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+                
+                if (this.dataset.answer === 'correct') {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('wrong');
+                    quiz.querySelector('[data-answer="correct"]').classList.add('correct');
+                }
+                
+                options.forEach(opt => opt.style.pointerEvents = 'none');
+                
+                setTimeout(() => {
+                    options.forEach(opt => {
+                        opt.style.pointerEvents = 'auto';
+                        opt.classList.remove('correct', 'wrong');
+                    });
+                }, 2000);
+            });
+        });
+    </script>
+ </body>
+</html>
